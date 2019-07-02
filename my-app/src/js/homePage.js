@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { BrowserRouter, Route, Switch} from "react-router-dom"
+import '../css/App.css'
 
 import { connect } from 'react-redux'
 
@@ -10,7 +10,6 @@ class home extends Component {
 
   render() {
     console.log('these are the props', this.props)
-    // console.log('these are the props', this.props.store.getState())
     return (
       <div>
       	<div className='App'>
@@ -29,7 +28,7 @@ class home extends Component {
             </a>
           </header>
         </div>
-        <div>
+        <div className='test'>
             This is the data manipulation test
         </div>
       </div>
