@@ -1,2 +1,2 @@
-# Reenactment-Website-Project
-A website project for a local reenactment group
+# WWII-History-Website-Project
+A website project for a local WWII History group
