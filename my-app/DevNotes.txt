@@ -1,1 +1,23 @@
 DevNotes.txt
+
+// imgur
+
+client id - 9041fb371b1651a
+
+client secret - 7a192bf55cbd73cfeee64a846eb2427aa6183e81
+
+Token Name
+IMGUR - Postman Collection
+Access Token
+a1ded10462b2878a18c85961e177b4cf96513138
+Token Type
+bearer
+expires_in
+315360000
+scope
+refresh_token
+299b7654928c6faaa72c794cd2a85b13d233c523
+account_id
+110612363
+account_username
+AaronBolarinho

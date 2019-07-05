@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './homePage.js'
 import NavBar from './navbar.js'
-
+//
 import { connect } from 'react-redux'
+//
+import axios from 'axios'
+
 
 class App extends Component {
   render() {

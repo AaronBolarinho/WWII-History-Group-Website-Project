@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#Ignoring React App Images
+/src/css/images
+
 # dependencies
 /node_modules
 /.pnp
