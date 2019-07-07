@@ -7,8 +7,9 @@ const initState = {
 const rootReducer = (state = initState, action) => {
   // console.log('this is the action from the root reducer', action)
   if (action.type === 'GET_DATA') {
-  		let objectKeys = Object.keys(action.data)
-  		let dataKey = objectKeys[0]
+  		// let objectKeys = Object.keys(action.data)
+  		// let dataKey = objectKeys[0]
+         let dataKey = 'test'
   		return {
   			...state,
   			[dataKey]: action.data

@@ -21,3 +21,15 @@ account_id
 110612363
 account_username
 AaronBolarinho
+
+IMGUR Authorization token for second app auth:
+
+//https://imgur.com/?state=%22did+this+work%22#access_token=ce84d393917bf0578b929b1706f3c209d9c496f1&expires_in=315360000&token_type=bearer&refresh_token=31ad1aa39832564efa0b3700ad2952bd508aec2c&account_username=AaronBolarinho&account_id=110612363
+
+Source email:
+
+https://api.imgur.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=REQUESTED_RESPONSE_TYPE&state=APPLICATION_STATE
+
+Register app in IMGUR
+
+Visit that URL with the relevent into subsituted in

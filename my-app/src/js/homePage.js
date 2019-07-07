@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../css/App.css'
-import Carousel from 'react-bootstrap/Carousel'
+import { Carousel, Form, Button } from 'react-bootstrap'
 //
 import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
 import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
@@ -9,26 +9,74 @@ import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
 import { connect } from 'react-redux'
 //
 import axios from 'axios'
-
+//
+import $ from 'jquery'
 
 class home extends Component {
   constructor(props) {
     super(props)
     this.state = {
       imageURL: '',
-      imgur: ''
+      imgur: '',
+      selectedFile: null
     }
+    this.fileInput = React.createRef()
+  }
+
+  // This is involved in the redux element of the component
+  getData = (data) => {
+    this.props.getData(data)
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    
+    console.log('this ran')
+
+    const imageFile = this.fileInput.current.files[0]
+
+    console.log('this is the length', this.fileInput.current.files.length)
+    
+    const form = new FormData()
+    form.append('image', imageFile)
+    form.append('album', 'VI6V2Ty')
+
+    // abac096c61
+    //https://imgur.com/?state=%22did+this+work%22#access_token=ce84d393917bf0578b929b1706f3c209d9c496f1&expires_in=315360000&token_type=bearer&refresh_token=31ad1aa39832564efa0b3700ad2952bd508aec2c&account_username=AaronBolarinho&account_id=110612363
+
+    const settings = {
+      async: true,
+      crossDomain: true,
+      url: 'https://api.imgur.com/3/upload',
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ce84d393917bf0578b929b1706f3c209d9c496f1'
+      },
+      processData: false,
+      contentType: false,
+      mimeType: 'multipart/form-data',
+      data: form
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response)
+    })
   }
 
   componentDidMount() {
     axios.get('http://localhost:3002/test2')
       .then(response => {
         const myVariable = response.data
-        // this.setState({ imgur: response.data })
-        console.log('this is the new variable', myVariable)
-        console.log('this is the new variable', myVariable.data[0].link)
+
+        // console.log('this is the new variable1', myVariable)
+        // console.log('this is the new variable2', myVariable.data[0].link)
+
         this.setState({ imgur: myVariable.data[0].link })
-        console.log('this is the new state', this.state)
+
+        // console.log('this is the new state', this.state)
+        
+        // This sends the fetched data to the component store
+        this.getData(myVariable)
       })
       .catch(error => {
         console.log(error)
@@ -37,7 +85,6 @@ class home extends Component {
 
   render() {
     console.log('these are the props', this.props)
-    // const { imgur } = this.state.imgur
     return (
       <div>
       	<div className='App'>
@@ -59,6 +106,14 @@ class home extends Component {
         <div className='test'>
             This is the data manipulation test
         </div>
+        <Form>
+          <Form.Group controlId='formBasicEmail' onSubmit={this.handleSubmit}>
+            <Form.Control name='myFile' type='file' multiple required ref={this.fileInput}/>
+          </Form.Group>
+          <Button variant='primary' type='submit' onClick={this.handleSubmit}>
+            Upload
+          </Button>
+        </Form>
         <img src={this.state.imgur} />
         <Carousel>
           <Carousel.Item>
@@ -106,6 +161,7 @@ const mapStateToProps = (state) => {
   return {
     data: state
   }
+  console.log('sent to store')
 }
 
 const mapDispatchToProps = (dispatch) => {
