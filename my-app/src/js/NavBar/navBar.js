@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Nav from 'react-bootstrap/Nav'
+import '../../css/NavBar.css'
+import TestSymbol from '../../css/images/German_Cross.png'
 
 import { connect } from 'react-redux'
 
@@ -12,11 +14,14 @@ class NavBar extends Component {
     console.log('these are the props for the nav bar', this.props)
     // console.log('these are the props', this.props.store.getState())
     return (
-      <div>
+      <div className='totalNav'>
+      <img src={TestSymbol} className='navImg' />
+      <div className='navBar'>
       	<Nav
+          className='navItems'
 		  activeKey='/home'
 		  onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-		>
+		    >
 		  <Nav.Item>
 		    <Nav.Link href='/home'>Active</Nav.Link>
 		  </Nav.Item>
@@ -32,9 +37,7 @@ class NavBar extends Component {
 		    </Nav.Link>
 		  </Nav.Item>
 		</Nav>
-        <div className='test'>
-            This is the nav bar
-        </div>
+      </div>
       </div>
     )
   }

@@ -1,9 +1,15 @@
+.stripBorder {
+	border: 5px solid #000;
+	height: 1em;
+	background-color: white;
+}
+
 
 .test {
   color: aquamarine;
 }
 
-.navBar {
+/*.navBar {
   border: #020202;
   border-style: solid;
-}
+}*/

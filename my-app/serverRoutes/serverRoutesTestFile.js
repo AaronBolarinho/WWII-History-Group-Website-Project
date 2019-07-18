@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
+//
 
 // unused middleware---------------
 // const fs = require('fs')
@@ -55,5 +56,11 @@ router.get('/test2', (req, res) => {
     	res.json(myVariable)
   })
 })
+
+router.post('/upload', (req, res) => {
+  console.log('this ran woo')
+  // console.log(res.json(req.file))
+  res.send(JSON.parse(req.file))
+  })
 
 module.exports = router

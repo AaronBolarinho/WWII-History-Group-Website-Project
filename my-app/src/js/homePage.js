@@ -5,12 +5,17 @@ import { Carousel, Form, Button } from 'react-bootstrap'
 import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
 import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
 import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
+import Video from './wwII.mp4'
 //
 import { connect } from 'react-redux'
 //
 import axios from 'axios'
 //
 import $ from 'jquery'
+//
+// import NavBar from './NavBar/navBar.js'
+//
+import '../css/NavBar.css'
 
 class home extends Component {
   constructor(props) {
@@ -28,39 +33,72 @@ class home extends Component {
     this.props.getData(data)
   }
 
+//     handleSubmit = (event) => {
+//     event.preventDefault()
+//     const NumOfFiles = this.fileInput.current.files.length
+// 
+//     for (let i = 0; i < NumOfFiles; i += 1) {
+//       const imageFile = this.fileInput.current.files[i]
+// 
+//       console.log('this is the length', this.fileInput.current.files.length)
+//       
+//       const form = new FormData()
+//       form.append('image', imageFile)
+//       form.append('album', 'VI6V2Ty')
+// 
+//       const settings = {
+//         async: true,
+//         crossDomain: true,
+//         url: 'http://localhost:3002/upload',
+//         method: 'POST',
+//         headers: {
+//           Authorization: 'Bearer ce84d393917bf0578b929b1706f3c209d9c496f1'
+//         },
+//         processData: false,
+//         contentType: false,
+//         mimeType: 'multipart/form-data',
+//         data: form
+//       }
+// 
+//       console.log('this is the form data', form)
+// 
+//       $.ajax(settings).done(function (response) {
+//         console.log(response)
+//       })
+//     }
+//   }
+
   handleSubmit = (event) => {
     event.preventDefault()
-    
-    console.log('this ran')
+    const NumOfFiles = this.fileInput.current.files.length
 
-    const imageFile = this.fileInput.current.files[0]
+    for (let i = 0; i < NumOfFiles; i += 1) {
+      const imageFile = this.fileInput.current.files[i]
 
-    console.log('this is the length', this.fileInput.current.files.length)
-    
-    const form = new FormData()
-    form.append('image', imageFile)
-    form.append('album', 'VI6V2Ty')
+      console.log('this is the length', this.fileInput.current.files.length)
+      
+      const form = new FormData()
+      form.append('image', imageFile)
+      form.append('album', 'VI6V2Ty')
 
-    // abac096c61
-    //https://imgur.com/?state=%22did+this+work%22#access_token=ce84d393917bf0578b929b1706f3c209d9c496f1&expires_in=315360000&token_type=bearer&refresh_token=31ad1aa39832564efa0b3700ad2952bd508aec2c&account_username=AaronBolarinho&account_id=110612363
+      const settings = {
+        async: true,
+        crossDomain: true,
+        url: 'https://api.imgur.com/3/upload',
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ce84d393917bf0578b929b1706f3c209d9c496f1'
+        },
+        processData: false,
+        contentType: false,
+        mimeType: 'multipart/form-data',
+        data: form
+      }
 
-    const settings = {
-      async: true,
-      crossDomain: true,
-      url: 'https://api.imgur.com/3/upload',
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer ce84d393917bf0578b929b1706f3c209d9c496f1'
-      },
-      processData: false,
-      contentType: false,
-      mimeType: 'multipart/form-data',
-      data: form
+      $.ajax(settings).done(function (response) {
+        console.log(response)
+      })
     }
-
-    $.ajax(settings).done(function (response) {
-      console.log(response)
-    })
   }
 
   componentDidMount() {
@@ -73,7 +111,7 @@ class home extends Component {
 
         this.setState({ imgur: myVariable.data[0].link })
 
-        // console.log('this is the new state', this.state)
+        console.log('this is the new state', this.state)
         
         // This sends the fetched data to the component store
         this.getData(myVariable)
@@ -86,7 +124,18 @@ class home extends Component {
   render() {
     console.log('these are the props', this.props)
     return (
-      <div>
+    <div>
+        <div className='homePgVid'>
+          {/* <NavBar/> */}
+          <h1> Welcome to Our Study Group</h1>
+          <div className='video-container'>
+            <video autoPlay loop muted>
+              <source src={Video} type='video/mp4' />
+            </video>
+           </div>
+        </div>
+        <div className='stripBorder'>
+        </div>
       	<div className='App'>
           <header className='App-header'>
             <p>
@@ -115,6 +164,16 @@ class home extends Component {
           </Button>
         </Form>
         <img src={this.state.imgur} />
+
+        {/* <Form> */}
+        {/*   <Form.Group controlId='formBasicEmail' onSubmit={this.handleSubmit}> */}
+        {/*     <Form.Control name='myFile' type='file' multiple required ref={this.fileInput}/> */}
+        {/*   </Form.Group> */}
+        {/*   <Button variant='primary' type='submit' onClick={this.handleSubmit}> */}
+        {/*     Upload */}
+        {/*   </Button> */}
+        {/* </Form> */}
+
         <Carousel>
           <Carousel.Item>
             <img

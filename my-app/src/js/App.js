@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './homePage.js'
-import NavBar from './navbar.js'
+import NavBar from './NavBar/navBar.js'
 //
 import { connect } from 'react-redux'
 //

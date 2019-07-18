@@ -3,13 +3,16 @@ const app = express()
 // const morgan = require('morgan')
 // const mysql = require('mysql')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('./public'))
+app.use(cors())
+// app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'))
 // app.use(morgan('short'))
 
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', ['*'])
+  res.append('Access-Control-Allow-Origin', [])
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.append('Access-Control-Allow-Headers', 'Content-Type')
   next()
