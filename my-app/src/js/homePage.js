@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import '../css/App.css'
 import { Carousel, Form, Button } from 'react-bootstrap'
 //
-import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
-import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
-import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
-import Video from './wwII.mp4'
+// import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
+// import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
+// import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
+// import Video from './wwII.mp4'
 //
 import { connect } from 'react-redux'
 //
@@ -125,17 +125,20 @@ class home extends Component {
     console.log('these are the props', this.props)
     return (
     <div>
-        <div className='homePgVid'>
-          {/* <NavBar/> */}
-          <h1> Welcome to Our Study Group</h1>
-          <div className='video-container'>
-            <video autoPlay loop muted>
-              <source src={Video} type='video/mp4' />
-            </video>
-           </div>
-        </div>
+        {/* <div className='homePgVid'> */}
+        {/*   {/* <NavBar/> */} */}
+        {/*   <h1> Welcome to Our Study Group</h1> */}
+        {/*   <div className='video-container'> */}
+        {/*     <video autoPlay loop muted> */}
+        {/*       <source src={Video} type='video/mp4' /> */}
+        {/*     </video> */}
+        {/*    </div> */}
+        {/* </div> */}
+
+
         <div className='stripBorder'>
         </div>
+
       	<div className='App'>
           <header className='App-header'>
             <p>
@@ -152,9 +155,11 @@ class home extends Component {
             </a>
           </header>
         </div>
+
         <div className='test'>
             This is the data manipulation test
         </div>
+
         <Form>
           <Form.Group controlId='formBasicEmail' onSubmit={this.handleSubmit}>
             <Form.Control name='myFile' type='file' multiple required ref={this.fileInput}/>
@@ -163,6 +168,7 @@ class home extends Component {
             Upload
           </Button>
         </Form>
+
         <img src={this.state.imgur} />
 
         {/* <Form> */}
@@ -174,43 +180,45 @@ class home extends Component {
         {/*   </Button> */}
         {/* </Form> */}
 
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className='d-block w-100'
-              src={TestImage1}
-              alt='First slide'
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className='d-block w-100'
-              src={TestImage2}
-              alt='Second slide'
-            />
+{/*         <Carousel> */}
+{/*           <Carousel.Item> */}
+{/*             <img */}
+{/*               className='d-block w-100' */}
+{/*               src={TestImage1} */}
+{/*               alt='First slide' */}
+{/*             /> */}
+{/*             <Carousel.Caption> */}
+{/*               <h3>First slide label</h3> */}
+{/*               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+{/*             </Carousel.Caption> */}
+{/*           </Carousel.Item> */}
+{/*           <Carousel.Item> */}
+{/*             <img */}
+{/*               className='d-block w-100' */}
+{/*               src={TestImage2} */}
+{/*               alt='Second slide' */}
+{/*             /> */}
+{/*  */}
+{/*             <Carousel.Caption> */}
+{/*               <h3>Second slide label</h3> */}
+{/*               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+{/*             </Carousel.Caption> */}
+{/*           </Carousel.Item> */}
+{/*           <Carousel.Item> */}
+{/*             <img */}
+{/*               className='d-block w-100' */}
+{/*               src={TestImage3} */}
+{/*               alt='Third slide' */}
+{/*             /> */}
+{/*  */}
+{/*             <Carousel.Caption> */}
+{/*               <h3>Third slide label</h3> */}
+{/*               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+{/*             </Carousel.Caption> */}
+{/*           </Carousel.Item> */}
+{/*         </Carousel> */}
 
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className='d-block w-100'
-              src={TestImage3}
-              alt='Third slide'
-            />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
+        
       </div>
     )
   }
