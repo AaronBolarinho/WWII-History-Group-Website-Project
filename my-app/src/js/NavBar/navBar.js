@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../../css/NavBar.css'
-import TestSymbol from '../../css/images/German_Cross.png'
+// import TestSymbol from '../../css/images/German_Cross.png'
 
 import { connect } from 'react-redux'
 
@@ -15,7 +15,7 @@ class NavBar extends Component {
     // console.log('these are the props', this.props.store.getState())
     return (
       <div className='totalNav'>
-      <img src={TestSymbol} className='navImg' />
+      {/* <img src={TestSymbol} className='navImg' /> */}
       <div className='navBar'>
       	<Nav
           className='navItems'
