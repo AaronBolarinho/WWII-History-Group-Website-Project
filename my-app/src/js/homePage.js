@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import '../css/App.css'
 import { Carousel, Form, Button } from 'react-bootstrap'
-//
-// import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
+
+import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
 // import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
 // import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
 // import Video from './wwII.mp4'
@@ -16,6 +16,8 @@ import $ from 'jquery'
 // import NavBar from './NavBar/navBar.js'
 //
 import '../css/NavBar.css'
+//
+import Timer from 'react-compound-timer'
 
 class home extends Component {
   constructor(props) {
@@ -23,7 +25,10 @@ class home extends Component {
     this.state = {
       imageURL: '',
       imgur: '',
-      selectedFile: null
+      selectedFile: null,
+      randomWord: '',
+      userName: 'My name is...',
+      named: false
     }
     this.fileInput = React.createRef()
   }
@@ -31,6 +36,37 @@ class home extends Component {
   // This is involved in the redux element of the component
   getData = (data) => {
     this.props.getData(data)
+  }
+
+  // clock testing
+  handleSubmit2 = (e) => {
+    e.preventDefault()
+    this.setState({ userName: e.target.name.value })
+    this.setState({ named: true })
+    console.log('this trigger ran!')
+    console.log('this is what i want', e.target.name.value)
+    console.log('this is the state', this.state)
+  }
+
+   renderInputField = () => {
+    let nameForm
+
+    if (!this.state.named) {
+      nameForm =
+        <div>
+          <form onSubmit={this.handleSubmit2}>
+            <label>
+              Name yourself Keyboard Warrior!
+              <br></br>
+              <input type='text' name='name' />
+            </label>
+            <br></br>
+            <input type='submit' value='I am so named' />
+          </form>
+        </div>
+    }
+      
+      return nameForm
   }
 
 //     handleSubmit = (event) => {
@@ -119,6 +155,25 @@ class home extends Component {
       .catch(error => {
         console.log(error)
       })
+// this is a test
+      axios.get('https://random-word-api.herokuapp.com/word?key=YGJ5CLVH&number=1000')
+      .then(response => {
+        const myVariable = response.data
+
+        console.log('this is the new word', myVariable)
+        // console.log('this is the new variable2', myVariable.data[0].link)
+
+        this.setState({ randomWord: myVariable })
+
+        console.log('this is the new state with new word', this.state)
+        console.log('this is the new state item', this.state.randomWord[998])
+        
+        // This sends the fetched data to the component store
+        // this.getData(myVariable)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -169,7 +224,58 @@ class home extends Component {
           </Button>
         </Form>
 
-        <img src={this.state.imgur} />
+        <img src={TestImage1} />
+
+        {/* <div className='ClockTest'> */}
+        {/*   <Timer */}
+        {/*     initialTime={300000} */}
+        {/*     direction='backward' */}
+        {/*   > */}
+        {/*     {() => ( */}
+        {/*       <React.Fragment> */}
+        {/*         <Timer.Minutes formatValue={value => `${value} minutes `} /> */}
+        {/*         <Timer.Seconds /> seconds */}
+        {/*       </React.Fragment> */}
+        {/*     )} */}
+        {/*   </Timer> */}
+        {/* </div> */}
+
+        <div className='ClockTest'>
+          <Timer
+            initialTime={300000}
+            startImmediately={false}
+            direction='backward'
+          >
+            {({ start, resume, pause, stop, reset, timerState }) => (
+              <React.Fragment>
+                <div>
+                  <Timer.Minutes formatValue={value => `${value} minutes `} />
+                  <Timer.Seconds /> seconds
+                </div>
+                <div>
+                <button onClick={start}>Start</button>
+                <button onClick={reset}>Reset</button>
+            </div>
+              </React.Fragment>
+            )}
+          </Timer>
+        </div>
+
+        <p>{this.state.userName}</p>
+
+        {this.renderInputField()}
+
+        <div>
+          <form onSubmit={this.handleSubmit2}>
+            <label>
+              Name yourself Keyboard Warrior!
+              <br></br>
+              <input type='text' name='name' />
+            </label>
+            <br></br>
+            <input type='submit' value='I am so named' />
+          </form>
+        </div>
 
         {/* <Form> */}
         {/*   <Form.Group controlId='formBasicEmail' onSubmit={this.handleSubmit}> */}
@@ -218,7 +324,7 @@ class home extends Component {
 {/*           </Carousel.Item> */}
 {/*         </Carousel> */}
 
-        
+
       </div>
     )
   }
