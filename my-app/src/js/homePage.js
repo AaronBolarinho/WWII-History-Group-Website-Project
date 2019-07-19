@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../css/App.css'
 import { Carousel, Form, Button } from 'react-bootstrap'
 
-import TestImage1 from '../css/images/Equipment/conventionalShoeGeneric.jpeg'
+import TestImage1 from '../css/images/German_Cross.png'
 // import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
 // import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
 // import Video from './wwII.mp4'
