@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../css/App.css'
 import { Carousel, Form, Button } from 'react-bootstrap'
 
-import TestImage1 from '../css/images/German_Cross.png'
+// import TestImage1 from '../css/images/German_Cross.png'
 // import TestImage2 from '../css/images/Equipment/Aemma_Heraldric_Logo.jpg'
 // import TestImage3 from '../css/images/Equipment/fencingMask.jpg'
 // import Video from './wwII.mp4'
@@ -224,7 +224,7 @@ class home extends Component {
           </Button>
         </Form>
 
-        <img src={TestImage1} />
+        <img src='https://images-na.ssl-images-amazon.com/images/I/81E0A-BFLJL._UL1500_.jpg'/>
 
         {/* <div className='ClockTest'> */}
         {/*   <Timer */}
